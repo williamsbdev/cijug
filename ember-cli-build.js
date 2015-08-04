@@ -19,5 +19,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  app.import({test: "bower_components/fauxjax/dist/fauxjax.min.js"});
+
   return app.toTree();
 };

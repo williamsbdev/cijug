@@ -1,16 +1,10 @@
 import Ember from 'ember';
+import PromiseMixin from "ember-promise/mixins/promise";
 
 export default Ember.Route.extend({
     model: function() {
-        return [
-            {
-                id: "1",
-                speaker: "Brandon"
-            },
-            {
-                id: "2",
-                speaker: "Darrin"
-            }
-        ];
+        return PromiseMixin.xhr('/api/sessions').then(function(response) {
+            return response;
+        });
     }
 });

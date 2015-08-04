@@ -12,6 +12,25 @@ module('Acceptance | dashboard', {
 });
 
 test('visiting /dashboard', function(assert) {
+    Ember.$.fauxjax.new({
+        request: {
+            url: "/api/sessions",
+            method: "GET"
+        },
+        response: {
+            status: 200,
+            content: [
+                {
+                    id: "1",
+                    speaker: "Brandon"
+                },
+                {
+                    id: "2",
+                    speaker: "Darrin"
+                }
+            ]
+        }
+    });
     visit('/dashboard');
     andThen(function() {
         assert.equal(currentURL(), '/dashboard');
