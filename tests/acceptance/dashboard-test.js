@@ -22,11 +22,13 @@ test('visiting /dashboard', function(assert) {
             content: [
                 {
                     id: "1",
-                    speaker: "Brandon"
+                    speaker: "Brandon",
+                    session: "Ember"
                 },
                 {
                     id: "2",
-                    speaker: "Darrin"
+                    speaker: "Darrin",
+                    session: "Angular"
                 }
             ]
         }
@@ -35,5 +37,10 @@ test('visiting /dashboard', function(assert) {
     andThen(function() {
         assert.equal(currentURL(), '/dashboard');
         assert.equal(find('.speaker').length, 2);
+    });
+    click(".speaker:eq(0)");
+    andThen(function() {
+        assert.equal(currentURL(), '/dashboard/speaker/1');
+        assert.equal(find('.session').text(), 'Brandon is speaking about Ember');
     });
 });

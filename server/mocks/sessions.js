@@ -6,11 +6,13 @@ module.exports = function(app) {
     res.send([
         {
             id: "1",
-            speaker: "Brandon"
+            speaker: "Brandon",
+            session: "Ember"
         },
         {
             id: "2",
-            speaker: "Darrin"
+            speaker: "Darrin",
+            session: "Angular"
         }
     ]);
   });
